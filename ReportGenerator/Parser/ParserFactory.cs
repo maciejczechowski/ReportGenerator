@@ -64,6 +64,12 @@ namespace Palmmedia.ReportGenerator.Parser
         {
             var parsers = new List<IParser>();
 
+            if (reportFile.EndsWith("txt"))
+            {
+                parsers.Add (new SharpCoverParser (reportFile));
+                return parsers;
+            }
+
             XContainer report = null;
             try
             {
